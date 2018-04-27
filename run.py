@@ -50,26 +50,8 @@ class Moments(object):
         alk = self.wait.until(EC.presence_of_element_located((By.ID, "com.tencent.mm:id/alk")))
         alk.click()
 
-    def wait_data(self):
-        """
-        等待加载数据
-        :return:
-        """
-        is_exist = True
-        # times = 0
-        try:
-            while is_exist:
-                # times += 1
-                # print("正在加载数据%s"% times)
-                is_exist = self.driver.find_element_by_id("com.tencent.mm:id/xe")
-                time.sleep(0.5)
-        except Exception as e:
-            print("数据加载完成...")
-
     def enter(self):
-        # 加载微信数据
-        self.wait_data()
-        # 点击发现选项卡
+        # 点击"发现"选项卡
         finds = self.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//*[@resource-id='com.tencent.mm:id/ayn']")))
         finds[2].click()
         # 进入朋友圈
